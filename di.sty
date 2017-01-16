@@ -120,27 +120,27 @@
 
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}%
 
-\newcommand{\etunimi}[1]{\gdef\@etunimi{#1}}
-\newcommand{\sukunimi}[1]{\gdef\@sukunimi{#1}}
-\newcommand{\valvoja}[1]{\gdef\@valvoja{#1}}
+\newcommand{\firstname}[1]{\gdef\@firstname{#1}}
+\newcommand{\lastname}[1]{\gdef\@lastname{#1}}
+\newcommand{\supervisor}[1]{\gdef\@supervisor{#1}}
 \newcommand{\otsikko}[1]{\gdef\@otsikko{#1}
 	\gdef\@isotsikko{\MakeUppercase{#1}}}
 
-\newcommand{\getfirstname}{\@etunimi}
-\newcommand{\getlastname}{\@sukunimi}
+\newcommand{\getfirstname}{\@firstname}
+\newcommand{\getlastname}{\@lastname}
 
-\newcommand{\vuosi}[1]{\gdef\@vuosi{#1}}
-\newcommand{\koulutusohjelma}[1]{\gdef\@koulutusohjelma{\MakeUppercase{#1}}}
+\newcommand{\thesisyear}[1]{\gdef\@thesisyear{#1}}
+\newcommand{\degreeprogram}[1]{\gdef\@degreeprogram{\MakeUppercase{#1}}}
 
 \newcommand{\lskip}[1][]{\vspace{#1\baselineskip}\noindent}
 
 \newcommand{\avainsanat}{\lskip Avainsanat: }
 \newcommand{\keywords}{\lskip Keywords: }
 
-\newcommand{\allekirjoitus}[1]{\par\lskip[2]\hspace{8.5cm}{#1}\par\lskip[2]\hspace{8.5cm}\@etunimi\ \@sukunimi}
+\newcommand{\allekirjoitus}[1]{\par\lskip[2]\hspace{8.5cm}{#1}\par\lskip[2]\hspace{8.5cm}\@firstname\ \@lastname}
 
-\newcommand{\tyo}[1]{\gdef\@tyo{#1}}
-\newcommand{\kieli}[1]{\gdef\@kieli{#1}}
+\newcommand{\thesistype}[1]{\gdef\@thesistype{#1}}
+\newcommand{\thesislanguage}[1]{\gdef\@thesislanguage{#1}}
 % nimiölehti
 \renewcommand{\maketitle}{
 	\begin{titlepage}
@@ -148,42 +148,42 @@
 	%\epsfig{file=oylogoe.eps,width=1.7cm}
 	\includegraphics*[width=0.5\textwidth]{uni_logo}
 			
-	\ifthenelse{\equal{\@kieli}{finnish} \AND \equal{\@koulutusohjelma}{\MakeUppercase{information}}}{
+	\ifthenelse{\equal{\@thesislanguage}{finnish} \AND \equal{\@degreeprogram}{\MakeUppercase{information}}}{
 		{\sffamily \small
 			TIETOTEKNIIKAN OSASTO\linebreak
 			TIETOTEKNIIKAN KOULUTUSOHJELMA }
 	}{
-		\ifthenelse{\equal{\@kieli}{finnish} \AND \equal{\@koulutusohjelma}{\MakeUppercase{electrical}}}{
+		\ifthenelse{\equal{\@thesislanguage}{finnish} \AND \equal{\@degreeprogram}{\MakeUppercase{electrical}}}{
 			{\sffamily \small
 			S\"AHK\"OTEKNIIKAN OSASTO\linebreak
 			S\"AHK\"OTEKNIIKAN KOULUTUSOHJELMA }
 		}{
-			\ifthenelse{\equal{\@kieli}{english} \AND \equal{\@koulutusohjelma}{\MakeUppercase{information}}}{
+			\ifthenelse{\equal{\@thesislanguage}{english} \AND \equal{\@degreeprogram}{\MakeUppercase{information}}}{
 				{\sffamily \small
 				DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\linebreak
-				DEGREE PROGRAMME IN \@koulutusohjelma \ ENGINEERING }
+				DEGREE PROGRAMME IN \@degreeprogram \ ENGINEERING }
 			}{
 				{\sffamily \small
 				DEPARTMENT OF ELECTRICAL ENGINEERING\linebreak
-				DEGREE PROGRAMME IN \@koulutusohjelma \ ENGINEERING }
+				DEGREE PROGRAMME IN \@degreeprogram \ ENGINEERING }
 			}
 		}
 	}
 	\vspace*{6cm}
 	
-	\ifnum\pdfstrcmp{\@kieli}{finnish}=0
+	\ifnum\pdfstrcmp{\@thesislanguage}{finnish}=0
 		\parbox{13cm}{\flushleft \bf \Large \MakeUppercase{\@otsikko}}
 		
 		\vspace*{4cm}
 	
 		\parbox{11cm}{
 			\begin{tabbing}{ll}
-				Ty\"on valvoja\quad \= \hspace{7.5cm}  \kill
+				Ty\"on supervisor\quad \= \hspace{7.5cm}  \kill
 				Ty\"on tekijä \> \makebox{\rule{7.5cm}{.5pt}} \\
-						\> \@etunimi\ \@sukunimi \\ \\
-				Ty\"on valvoja	\> \makebox{\rule{7.5cm}{.5pt}} \\
-						\> \@valvoja \\ \\
-				Hyv\"aksytty	\> \makebox{\rule{1cm}{.5pt} /\rule{1cm}{.5pt} \@vuosi} \\ \\ \\
+						\> \@firstname\ \@lastname \\ \\
+				Ty\"on supervisor	\> \makebox{\rule{7.5cm}{.5pt}} \\
+						\> \@supervisor \\ \\
+				Hyv\"aksytty	\> \makebox{\rule{1cm}{.5pt} /\rule{1cm}{.5pt} \@thesisyear} \\ \\ \\
 				Arvosana	\> \makebox{\rule{7.5cm}{.5pt}}
 			\end{tabbing}}
 	\else
@@ -195,10 +195,10 @@
 			\begin{tabbing}{ll}
 				Supervisor\quad \= \hspace{7.5cm}  \kill
 				Author \> \makebox{\rule{7.5cm}{.5pt}} \\
-						\> \@etunimi\ \@sukunimi \\ \\
+						\> \@firstname\ \@lastname \\ \\
 				Supervisor	\> \makebox{\rule{7.5cm}{.5pt}} \\
-						\> \@valvoja \\ \\
-				Accepted	\> \makebox{\rule{1cm}{.5pt} /\rule{1cm}{.5pt} \@vuosi} \\ \\ \\
+						\> \@supervisor \\ \\
+				Accepted	\> \makebox{\rule{1cm}{.5pt} /\rule{1cm}{.5pt} \@thesisyear} \\ \\ \\
 				Grade	\> \makebox{\rule{7.5cm}{.5pt}}
 			\end{tabbing}}
 	\fi
@@ -210,7 +210,7 @@
 % sisällysluettelo
 
 \newcommand{\sisluettelo}{
-	\ifthenelse{\equal{\@kieli}{finnish}}{
+	\ifthenelse{\equal{\@thesislanguage}{finnish}}{
 		\renewcommand{\contentsname}{SIS\"ALLYSLUETTELO}%
 		\addtocontents{toc}{\protect\contentsline{chapter}{SIS\"ALLYSLUETTELO}{} }
 		}{
@@ -237,13 +237,13 @@
 \renewenvironment{abstract}{
 	\newpage 
 	\addtocontents{toc}{\protect\contentsline{chapter}{ABSTRACT}{} }
-	{\noindent \bf \@sukunimi\ \StrChar{\@etunimi}{1}.\ (\@vuosi) \@title .} University of Oulu, Degree Programme in \ifthenelse{\equal{\@koulutusohjelma}{\MakeUppercase{information}}}{Computer Science and}{Electrical} Engineering. \@tyo's thesis, \pageref{LastPage}~p.
+	{\noindent \bf \@lastname\ \StrChar{\@firstname}{1}.\ (\@thesisyear) \@title .} University of Oulu, Degree Programme in \ifthenelse{\equal{\@degreeprogram}{\MakeUppercase{information}}}{Computer Science and}{Electrical} Engineering. \@thesistype's thesis, \pageref{LastPage}~p.
 	\abschapter*{ABSTRACT} \bf}{}
 
 \newenvironment{tiivistelma}{
 	\newpage \selectlanguage{finnish}
 	\addtocontents{toc}{\protect\contentsline{chapter}{TIIVISTELM\"A}{} }
-	{\noindent \bf \@sukunimi\ \StrChar{\@etunimi}{1}.\ (\@vuosi) \@otsikko .} Oulun yli\-opis\-to, \ifthenelse{\equal{\@koulutusohjelma}{\MakeUppercase{information}}}{tie\-to\-tek\-nii\-kan}{s\"ah\-k\"o\-tek\-nii\-kan} tut\-kin\-to-oh\-jel\-ma. \IfEq{\@tyo}{Master}{Diplomity\"o}{Kandidaatinty\"o}, \pageref{LastPage}~s.
+	{\noindent \bf \@lastname\ \StrChar{\@firstname}{1}.\ (\@thesisyear) \@otsikko .} Oulun yli\-opis\-to, \ifthenelse{\equal{\@degreeprogram}{\MakeUppercase{information}}}{tie\-to\-tek\-nii\-kan}{s\"ah\-k\"o\-tek\-nii\-kan} tut\-kin\-to-oh\-jel\-ma. \IfEq{\@thesistype}{Master}{Diplomity\"o}{Kandidaatinty\"o}, \pageref{LastPage}~s.
 	\abschapter*{TIIVISTELM\"A} \bf}{\selectlanguage{english}}
 
 % alun numeroimattomat osat
@@ -348,7 +348,7 @@ Byte& \byte{0}&\byte{1} &\byte{2} & \byte{3} \\
 
 % lähdeluettelo (report.cls:sta modifioitu)
 \renewenvironment{thebibliography}[1]
-     {\IfEq{\@kieli}{english}{\dichapter{REFERENCES}}{\dichapter{VIITTEET}}
+     {\IfEq{\@thesislanguage}{english}{\dichapter{REFERENCES}}{\dichapter{VIITTEET}}
       \list{\@biblabel{\@arabic\c@enumiv}}%
            {\settowidth\labelwidth{\@biblabel{#1}}%
             \leftmargin\labelwidth
